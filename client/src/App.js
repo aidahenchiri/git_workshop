@@ -10,6 +10,8 @@ import { useSelector } from 'react-redux';
 import MovieList from './Component/Movie/MovieList';
 import Detail from './Component/Movie/Detail';
 import NavbarMovie from './Component/Movie/NavbarMovie';
+import Favorite from './Component/Movie/FavoriteListe';
+import FavoriteListe from './Component/Movie/FavoriteListe';
 
 
 
@@ -29,7 +31,7 @@ function App() {
  <Route path="/MovieList" element={<MovieList />}/>
  <Route path="/Details/:_id" element={<Detail />}/>
  <Route path="/navB" element={<NavbarMovie />}/>
-
+x <Route path="/favorite" element={<FavoriteListe />}/>
 </Routes>
     </div>
   );

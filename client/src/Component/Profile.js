@@ -2,6 +2,8 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { logOut } from '../JS/Action/Action'
+import { get_movie } from '../JS/Action/ActionMovies'
+
 const Profile = () => {
     const user=useSelector((state)=>state.userReducer.user  )
     const errors= useSelector((state)=>state.userReducer.error)
@@ -15,6 +17,8 @@ const Profile = () => {
 <h1>{user.email}</h1>
 <h1>{user.phone}</h1>
 <Link to="/Login"><button onClick={()=>dispatch(logOut())}>logout</button></Link>
+<Link to="/MovieList"><button onClick={()=>dispatch(get_movie())}>Movie List</button></Link>
+
 
     </div>
   )

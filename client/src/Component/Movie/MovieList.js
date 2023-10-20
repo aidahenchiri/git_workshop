@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { get_movie } from '../../JS/Action/ActionMovies'
 import MovieCard from './MovieCard'
 import NavbarMovie from './NavbarMovie'
+import { Link } from 'react-router-dom'
 const MovieList = () => {
     const movies=useSelector(state=>(state.MovieReducer.movie))
     const dispatch=useDispatch()
@@ -13,6 +14,7 @@ const MovieList = () => {
 return (
     <div>
                 <NavbarMovie />
+               <Link to="/favorite"><button>favorite liste </button></Link> 
                 {movies?.map(movie =><MovieCard movie={movie} key={movie._id} />)}
 
 

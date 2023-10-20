@@ -1,12 +1,11 @@
 
-const { LOAD_USER, REGISTER_USER, LOGIN_USER, LOG_OUT, FAIL_USER } = require("../ActionType/ActionType")
+const { LOAD_USER, REGISTER_USER, LOGIN_USER, LOG_OUT, FAIL_USER, FAVORITE } = require("../ActionType/ActionType")
 
 //initialisation
 const initialState ={  
     user:null,
     load:false,
     auth:false, //si errur auth = false 
-    
     error:null
 }
 
@@ -21,16 +20,19 @@ const userReducer =(state=initialState,{type,payload})=>
                 localStorage.setItem("token",payload.token)
                 return {...state,user:payload.newUser,auth:true,load:false
                 }
-                case LOGIN_USER:
+            case LOGIN_USER:
                     localStorage.setItem("token",payload.token)
                     return {...state,user:payload.findUser,auth:true,load:false
                     }
+            case FAVORITE:
+                 return {...state,user:payload.userN,auth:true,load:false
+                        }
 
-                case LOG_OUT:
+            case LOG_OUT:
                         localStorage.removeItem("token")
                         return {...state,user:null,auth:false,load:false
                          }
-                    case FAIL_USER:
+            case FAIL_USER:
                             return {...state,error:payload
                             } 
         default:
