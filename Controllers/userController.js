@@ -89,10 +89,12 @@ exports.login=async(req,res)=>{   // appel tous les products
                         const {_id,Title,Descrption,PostUrl,Rate,Trailer}=req.body
                     //    const favoris= new userModel({_id,Title,Descrption,PostUrl,Rate,Trailer})
                          const userN = await  userModel.findById(userId)
-                         userN.favoris.push({_id,Title,Descrption,PostUrl,Rate,Trailer})
+                         const verif = await userN.favoris.findById(_id)
+                         if (!verif){
+                            userN.favoris.push({_id,Title,Descrption,PostUrl,Rate,Trailer})                                                                       
                          await userN.save()
                           res.status(200).send({msg:"the Movie has been added successfuly",userN})
-                    
+                         }
                     } catch (error) {
                         res.status(400).send({msg:"cannot add the Movie",error})  // erreur client 
                     }
