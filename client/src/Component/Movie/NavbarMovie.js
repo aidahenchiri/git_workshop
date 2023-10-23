@@ -8,21 +8,37 @@ import Col from 'react-bootstrap/Col';
 import { useDispatch } from 'react-redux';
 
 
-const NavbarMovie = () => {
-  const [Title,setTitle]=useState()
-  const [Rate,setRate]=useState()
+const NavbarMovie = ({movies,setMovie}) => {
+  const [Title,setTitle]=useState("")
+  const [Rate,setRate]=useState(0)
   const dispatch=useDispatch()
-  const handleSearch=(e)=>
-  { 
-    setTitle({Title,[e.target.Title]:e.target.value})
-     
+console.log(movies)
+  const handleTitle=(e)=>
+  {  
+       setTitle(e.target.value)
   }
   const handleRAte=(e)=>
   { 
-  setRate({Rate,[e.target.Rate]:e.target.value})
+  setRate(e.target.value)
   }
-  console.log(Title,Rate)
   
+  const handlSearch=(movies)=>
+  {
+     var searched=movies
+
+     console.log(searched)
+    if(Rate!=0 )
+    {
+      searched= searched.filter(el=>el.Rate == Rate)
+    }
+    
+    if(Title!="" )
+    {
+      searched= searched.filter(el=>el.Title.toUpperCase().trim().includes(Title.toUpperCase().trim()) )
+    }
+    setMovie(searched)
+
+  }
   // const handleSearchButton = async (search) => {
   //   try {
   //     await dispatch(getByRate(Rate,Title));
@@ -42,13 +58,13 @@ const NavbarMovie = () => {
       <Form inline>
         <Row>
           <Col>
-            <Form.Control type="text"  placeholder="title" className=" mr-sm-2" name="Title"  onChange={(e)=>handleSearch(e)}/>
+            <Form.Control type="text"  placeholder="title" className=" mr-sm-2" name="Title"  onChange={(e)=>handleTitle(e)}/>
           </Col>
           <Col >
             <Form.Control type="text"  placeholder="rate" className=" mr-sm-2" name="Rate"  onChange={(e)=>handleRAte(e)}/>
           </Col>
           <Col xs="auto">
-            <Button type="submit">Submit</Button>
+            <Button type="submit" onClick={handlSearch}>Submit</Button>
           </Col>
         </Row>
       </Form>

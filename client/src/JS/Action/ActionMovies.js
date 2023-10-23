@@ -47,14 +47,3 @@ export const deletemovie=(id)=>async(dispatch)=>{
     }
 }
 
-// export const get_Rate_Name=(id)=>async(dispatch)=>{
-//     dispatch({type:LOAD_MOVIE})
-//     try { 
-//         let result=await axios.get(`/api/movie/get_byId/${id}`)
-//         dispatch({type:GET_BY_ID,payload:result.data})
-
-//     } catch (error) {
-//         dispatch({type:FAIL_MOVIE,payload:error})
-
-//     }
-// }

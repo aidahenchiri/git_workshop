@@ -12,7 +12,7 @@ export const ADD_MOVIE= "ADD_MOVIE"
 export const DELETE_MOVIE= "DELETE_MOVIE"
 export const GET_BY_ID="GET_BY_ID"
 export const GET_MOVIE="GET_MOVIE"
-export const GET_Rate_Name="GET_Rate_Name"
+
 export const LOAD_MOVIE= "LOAD_MOVIE"  
 export const FAIL_MOVIE= "FAIL_MOVIE" 
 

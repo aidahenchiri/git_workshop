@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { favorite } from '../../JS/Action/Action';
 import { useState } from 'react';
 
-function MovieCard({movie}) {
+function MovieCard({Movie}) {
   const user=useSelector((state)=>state.userReducer.user  )
   const [userId,setUserId]=useState(user._id)
   const dispatch=useDispatch()
@@ -18,9 +18,9 @@ function MovieCard({movie}) {
       console.error('Error deleting product:', error);
     }
   };
-  const handleFavorit = async (userId,movie) => {
+  const handleFavorit = async (userId,Movie) => {
     try {
-      await dispatch(favorite(userId,movie));
+      await dispatch(favorite(userId,Movie));
       
     } catch (error) {
       console.error('Error deleting product:', error);
@@ -31,20 +31,20 @@ function MovieCard({movie}) {
 
 
     <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src={movie.PostUrl}/>
+      <Card.Img variant="top" src={Movie.PostUrl}/>
       <Card.Body>
-        <Card.Title>{movie.Title}</Card.Title>
+        <Card.Title>{Movie.Title}</Card.Title>
         <Card.Text>
-        {movie.Descrption}
+        {Movie.Descrption}
         </Card.Text>
-        <Card.Text> {movie.Rate}
+        <Card.Text> {Movie.Rate}
         </Card.Text>
         <Card.Text>
-        {movie.Trailer}
+        {Movie.Trailer}
         </Card.Text>
-        <Link to={`/Details/${movie._id}`}>  <Button onClick={()=>dispatch(get_byId(movie._id))} >Go film</Button></Link>  
-        <Button variant="primary" onClick={() =>handleDeleteMovie(movie._id)}>delete</Button>
-       <Button variant="primary" onClick={() =>handleFavorit(userId,movie)}>add to favorite</Button>
+        <Link to={`/Details/${Movie._id}`}>  <Button onClick={()=>dispatch(get_byId(Movie._id))} >Go film</Button></Link>  
+        <Button variant="primary" onClick={() =>handleDeleteMovie(Movie._id)}>delete</Button>
+       <Button variant="primary" onClick={() =>handleFavorit(userId,Movie)}>add to favorite</Button>
 
       </Card.Body>
     </Card>

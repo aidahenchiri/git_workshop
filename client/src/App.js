@@ -17,8 +17,8 @@ import FavoriteListe from './Component/Movie/FavoriteListe';
 
 function App() {
   const load=useSelector((state)=>state.userReducer.load  )
-  // const loadfilm=useSelector((state)=>state.MovieReducer.load  )
-
+  const loadfilm=useSelector((state)=>state.MovieReducer.load  )
+console.log(loadfilm)
   return (
     <div className="App">
 
@@ -28,10 +28,10 @@ function App() {
 <Route path="/Profile"  element={load?<Loading />:<Profile /> }/> 
 <Route path="/Login" element={<Login />}/> 
  <Route path="/Register" element={<Register />}/>
- <Route path="/MovieList" element={<MovieList />}/>
+ <Route path="/MovieList" element={loadfilm?<Loading />:<MovieList />}/>
  <Route path="/Details/:_id" element={<Detail />}/>
- <Route path="/navB" element={<NavbarMovie />}/>
-x <Route path="/favorite" element={<FavoriteListe />}/>
+ <Route path="/favorite" element={<FavoriteListe />}/>
+
 </Routes>
     </div>
   );

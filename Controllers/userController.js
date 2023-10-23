@@ -99,3 +99,5 @@ exports.login=async(req,res)=>{   // appel tous les products
                         res.status(400).send({msg:"cannot add the Movie",error})  // erreur client 
                     }
                     }
+
+                    
